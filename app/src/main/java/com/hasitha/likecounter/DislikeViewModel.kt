@@ -1,12 +1,16 @@
 package com.hasitha.likecounter
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class DislikeViewModel: ViewModel() {
 
-    var dislikeCounter = 0;
+    private var _dislikeCount = MutableLiveData<Int>(0)
+    val dislikeCount: LiveData<Int>
+        get() = _dislikeCount
 
     fun performDislike(){
-        this.dislikeCounter++
+        _dislikeCount.value = _dislikeCount.value !! + 1
     }
 }
